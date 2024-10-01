@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rust Decision Randomizer</title>
+</head>
+<body>
+    <h1>Rust Decision Randomizer</h1>
+    <button onclick="randomize()">Click to Randomize</button>
+    <p id="result"></p>
+
+    <script>
+        // JavaScript function to randomize decisions
+        function randomize() {
+            const serverType = ["Official", "Community", "Modded"];
+            const wipeLength = ["Weekly", "BiWeekly", "Monthly"];
+            const population = ["0-100", "100-200", "200-300", "300-400", "400+"];
+            const gatherRate = ["Vanilla", "2x", "3x", "4x+"];
+            const groupSize = ["Solo", "Solo/Duo", "Solo/Duo/Trio", "Unlimited"];
+            const placeLetter = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split('');
+            const placeNumber = [...Array(24).keys()].map(i => i + 1);  // Numbers 1 to 24
+
+            // Randomly select from each category
+            const randomServerType = serverType[Math.floor(Math.random() * serverType.length)];
+            const randomWipeLength = wipeLength[Math.floor(Math.random() * wipeLength.length)];
+            const randomPopulation = population[Math.floor(Math.random() * population.length)];
+            const randomGatherRate = gatherRate[Math.floor(Math.random() * gatherRate.length)];
+            const randomGroupSize = groupSize[Math.floor(Math.random() * groupSize.length)];
+            const randomPlaceLetter = placeLetter[Math.floor(Math.random() * placeLetter.length)];
+            const randomPlaceNumber = placeNumber[Math.floor(Math.random() * placeNumber.length)];
+
+            // Display the randomized decisions
+            const result = `
+                <strong>Server Type</strong>: ${randomServerType}<br>
+                <strong>Wipe Length</strong>: ${randomWipeLength}<br>
+                <strong>Population</strong>: ${randomPopulation}<br>
+                <strong>Gather Rate</strong>: ${randomGatherRate}<br>
+                <strong>Group Size</strong>: ${randomGroupSize}<br>
+                <strong>Place to Build</strong>: ${randomPlaceLetter}${randomPlaceNumber}
+            `;
+            document.getElementById('result').innerHTML = result;
+        }
+    </script>
+</body>
+</html>
